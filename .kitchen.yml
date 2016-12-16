@@ -1,0 +1,39 @@
+<%
+require 'yaml'
+dse_creds = YAML.load_file('dse_creds.yaml')
+%>
+---
+driver:
+  name: vagrant
+
+platforms:
+  - name: bento/centos-7.1
+
+verifier:
+  name: inspec
+  format: documentation
+
+provisioner:
+  name: chef_solo
+
+suites:
+  - name: studio
+    run_list:
+      - recipe[java]
+      - recipe[nginx]
+      - recipe[dse_studio::studio]
+      - recipe[nginx-proxy]
+    attributes:
+      java:
+        install_flavor: 'openjdk'
+        jdk_version: 8
+      dse:
+        studio:
+          repo_user: <%= dse_creds['repo_user'] %>
+          repo_pass: <%= dse_creds['repo_pass'] %>
+      nginx:
+        default_site_enabled: false
+      nginx_proxy:
+        proxies:
+          localhost:
+            url: 'http://localhost:9091'

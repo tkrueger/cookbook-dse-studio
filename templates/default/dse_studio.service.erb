@@ -1,0 +1,10 @@
+[Unit]
+Description=dse studio
+
+[Service]
+User=<%= node['dse']['studio']['user']%>
+ExecStart=<%= node['dse']['studio']['install_dir']%>/datastax-studio-<%= node['dse']['studio']['version'] %>/bin/server.sh <%= node['dse']['studio']['startup_params'] %>
+WorkingDirectory=<%= node['dse']['studio']['install_dir']%>/datastax-studio-<%= node['dse']['studio']['version'] %>
+
+[Install]
+WantedBy=default.target
