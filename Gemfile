@@ -15,6 +15,6 @@ group :development do
   gem 'chefspec'
   gem 'inspec'
   gem 'kitchen-inspec'
-  gem 'kitchen-ec2', '~> 1.2.0'
+  gem 'kitchen-ec2', '~> 1.3.0'
 end
 
