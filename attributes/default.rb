@@ -1,6 +1,6 @@
 
 
-default['dse']['studio']['version'] = '1.0.1'
+default['dse']['studio']['version'] = '2.0.0'
 default['dse']['studio']['download_url'] = "http://#{node['dse']['studio']['repo_user']}:#{node['dse']['studio']['repo_pass']}@downloads.datastax.com/enterprise/datastax-studio-#{node['dse']['studio']['version']}.tar.gz"
 default['dse']['studio']['download_to'] = '/tmp'
 default['dse']['studio']['user'] = 'dse'
